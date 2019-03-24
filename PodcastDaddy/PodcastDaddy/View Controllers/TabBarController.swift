@@ -26,7 +26,6 @@ class TabBarController: UITabBarController {
     fileprivate func generateNavigationController(for viewController: UIViewController, title: String, image: UIImage) -> UINavigationController {
         let navController = UINavigationController(rootViewController: viewController)
         viewController.navigationItem.title = title
-        navController.navigationBar.prefersLargeTitles = true
         navController.tabBarItem.title = title
         navController.tabBarItem.image = image
         return navController

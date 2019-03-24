@@ -53,12 +53,52 @@
 			isa = PBXGroup;
 			children = (
 				99F028A3224819C9002A5952 /* AppDelegate.swift */,
+				99F028BA2248414A002A5952 /* Service */,
+				99F028B922484141002A5952 /* View Controllers */,
+				99F028B822484139002A5952 /* Views */,
+				99F028B72248408E002A5952 /* Model */,
 				99F028AA224819CA002A5952 /* Assets.xcassets */,
 				99F028AC224819CA002A5952 /* LaunchScreen.storyboard */,
 				99F028AF224819CA002A5952 /* Info.plist */,
-				99F028B522481D03002A5952 /* TabBarController.swift */,
+				99F028BB22484150002A5952 /* Helpers & Extensions */,
 			);
 			path = PodcastDaddy;
+			sourceTree = "<group>";
+		};
+		99F028B72248408E002A5952 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		99F028B822484139002A5952 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		99F028B922484141002A5952 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				99F028B522481D03002A5952 /* TabBarController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		99F028BA2248414A002A5952 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		99F028BB22484150002A5952 /* Helpers & Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Helpers & Extensions";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
