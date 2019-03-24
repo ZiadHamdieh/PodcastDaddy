@@ -17,8 +17,8 @@ class TabBarController: UITabBarController {
         view.backgroundColor = .white
         
         viewControllers = [
+            generateNavigationController(for: SearchController(), title: "Search", image: #imageLiteral(resourceName: "search")),
             generateNavigationController(for: UIViewController(), title: "Favourites", image: #imageLiteral(resourceName: "favorites")),
-            generateNavigationController(for: UIViewController(), title: "Search", image: #imageLiteral(resourceName: "search")),
             generateNavigationController(for: UIViewController(), title: "Downloads", image: #imageLiteral(resourceName: "downloads"))
         ]
     }

@@ -11,6 +11,9 @@
 		99F028AB224819CA002A5952 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99F028AA224819CA002A5952 /* Assets.xcassets */; };
 		99F028AE224819CA002A5952 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99F028AC224819CA002A5952 /* LaunchScreen.storyboard */; };
 		99F028B622481D03002A5952 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F028B522481D03002A5952 /* TabBarController.swift */; };
+		99F028BD224841D6002A5952 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F028BC224841D6002A5952 /* SearchController.swift */; };
+		99F028C022484277002A5952 /* PodcastSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F028BF22484277002A5952 /* PodcastSearchCell.swift */; };
+		99F028C2224842B9002A5952 /* PodcastSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F028C1224842B9002A5952 /* PodcastSearchResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +23,9 @@
 		99F028AD224819CA002A5952 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		99F028AF224819CA002A5952 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99F028B522481D03002A5952 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		99F028BC224841D6002A5952 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		99F028BF22484277002A5952 /* PodcastSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastSearchCell.swift; sourceTree = "<group>"; };
+		99F028C1224842B9002A5952 /* PodcastSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastSearchResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,9 +60,9 @@
 			children = (
 				99F028A3224819C9002A5952 /* AppDelegate.swift */,
 				99F028BA2248414A002A5952 /* Service */,
-				99F028B922484141002A5952 /* View Controllers */,
-				99F028B822484139002A5952 /* Views */,
 				99F028B72248408E002A5952 /* Model */,
+				99F028B822484139002A5952 /* Views */,
+				99F028B922484141002A5952 /* View Controllers */,
 				99F028AA224819CA002A5952 /* Assets.xcassets */,
 				99F028AC224819CA002A5952 /* LaunchScreen.storyboard */,
 				99F028AF224819CA002A5952 /* Info.plist */,
@@ -68,6 +74,7 @@
 		99F028B72248408E002A5952 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				99F028C1224842B9002A5952 /* PodcastSearchResult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -75,6 +82,7 @@
 		99F028B822484139002A5952 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				99F028BF22484277002A5952 /* PodcastSearchCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -83,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				99F028B522481D03002A5952 /* TabBarController.swift */,
+				99F028BE22484250002A5952 /* Search */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -99,6 +108,14 @@
 			children = (
 			);
 			path = "Helpers & Extensions";
+			sourceTree = "<group>";
+		};
+		99F028BE22484250002A5952 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				99F028BC224841D6002A5952 /* SearchController.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,6 +189,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				99F028A4224819C9002A5952 /* AppDelegate.swift in Sources */,
+				99F028C2224842B9002A5952 /* PodcastSearchResult.swift in Sources */,
+				99F028BD224841D6002A5952 /* SearchController.swift in Sources */,
+				99F028C022484277002A5952 /* PodcastSearchCell.swift in Sources */,
 				99F028B622481D03002A5952 /* TabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
