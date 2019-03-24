@@ -1,0 +1,6 @@
+framework module Pods_PodcastDaddy {
+  umbrella header "Pods-PodcastDaddy-umbrella.h"
+
+  export *
+  module * { export * }
+}
