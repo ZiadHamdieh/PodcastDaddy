@@ -8,20 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		99F028A4224819C9002A5952 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F028A3224819C9002A5952 /* AppDelegate.swift */; };
-		99F028A6224819C9002A5952 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F028A5224819C9002A5952 /* ViewController.swift */; };
-		99F028A9224819C9002A5952 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99F028A7224819C9002A5952 /* Main.storyboard */; };
 		99F028AB224819CA002A5952 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99F028AA224819CA002A5952 /* Assets.xcassets */; };
 		99F028AE224819CA002A5952 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99F028AC224819CA002A5952 /* LaunchScreen.storyboard */; };
+		99F028B622481D03002A5952 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F028B522481D03002A5952 /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		99F028A0224819C9002A5952 /* PodcastDaddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PodcastDaddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99F028A3224819C9002A5952 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		99F028A5224819C9002A5952 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		99F028A8224819C9002A5952 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		99F028AA224819CA002A5952 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		99F028AD224819CA002A5952 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		99F028AF224819CA002A5952 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99F028B522481D03002A5952 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,11 +53,10 @@
 			isa = PBXGroup;
 			children = (
 				99F028A3224819C9002A5952 /* AppDelegate.swift */,
-				99F028A5224819C9002A5952 /* ViewController.swift */,
-				99F028A7224819C9002A5952 /* Main.storyboard */,
 				99F028AA224819CA002A5952 /* Assets.xcassets */,
 				99F028AC224819CA002A5952 /* LaunchScreen.storyboard */,
 				99F028AF224819CA002A5952 /* Info.plist */,
+				99F028B522481D03002A5952 /* TabBarController.swift */,
 			);
 			path = PodcastDaddy;
 			sourceTree = "<group>";
@@ -124,7 +121,6 @@
 			files = (
 				99F028AE224819CA002A5952 /* LaunchScreen.storyboard in Resources */,
 				99F028AB224819CA002A5952 /* Assets.xcassets in Resources */,
-				99F028A9224819C9002A5952 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,22 +131,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99F028A6224819C9002A5952 /* ViewController.swift in Sources */,
 				99F028A4224819C9002A5952 /* AppDelegate.swift in Sources */,
+				99F028B622481D03002A5952 /* TabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		99F028A7224819C9002A5952 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				99F028A8224819C9002A5952 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		99F028AC224819CA002A5952 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
