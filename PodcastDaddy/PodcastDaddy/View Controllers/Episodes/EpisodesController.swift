@@ -48,9 +48,18 @@ class EpisodesController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! EpisodeCell
+        cell.selectionStyle = .none
         let currentEpisode = episodes[indexPath.row]
         cell.episode = currentEpisode
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let window = UIApplication.shared.keyWindow
+        let playerView = PlayerView(frame: self.view.frame)
+        playerView.episode = episodes[indexPath.row]
+        playerView.backgroundColor = .white
+        window?.addSubview(playerView)
     }
     
 }

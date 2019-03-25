@@ -52,6 +52,7 @@ class SearchController: UITableViewController, UISearchBarDelegate {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! PodcastSearchCell
+        cell.selectionStyle = .none
         let podcast = podcasts?.results[indexPath.row]
         cell.podcast = podcast
         return cell

@@ -25,7 +25,7 @@ class EpisodeCell: UITableViewCell {
 
     fileprivate let title = UILabel(text: "Episode Title", font: .boldSystemFont(ofSize: 18), numberOfLines: 2)
     fileprivate let publicationDate = UILabel(text: "Pub Date", font: .systemFont(ofSize: 16))
-    fileprivate let summary = UILabel(text: "Description of the episode", font: .systemFont(ofSize: 14), numberOfLines: 2)
+    fileprivate let summary = UILabel(text: "Description of the episode", font: .systemFont(ofSize: 14), numberOfLines: 3)
     fileprivate let artwork: UIImageView = {
         let iv = UIImageView()
         iv.layer.cornerRadius = 12
