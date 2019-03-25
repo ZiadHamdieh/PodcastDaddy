@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class SearchController: UITableViewController, UISearchBarDelegate {
     
@@ -38,7 +39,7 @@ class SearchController: UITableViewController, UISearchBarDelegate {
     }
     
     fileprivate func setupTableView() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
+        tableView.register(PodcastSearchCell.self, forCellReuseIdentifier: cellId)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -46,11 +47,9 @@ class SearchController: UITableViewController, UISearchBarDelegate {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! PodcastSearchCell
         let podcast = podcasts?.results[indexPath.row]
-        cell.textLabel?.text = podcast?.trackName
-//        cell.title.text = podcast?.trackName ?? ""
-//        cell.artist.text = podcast?.artistName ?? ""
+        cell.podcast = podcast
         return cell
     }
     

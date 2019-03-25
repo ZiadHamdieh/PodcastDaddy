@@ -18,4 +18,5 @@ struct Result: Decodable {
     var artistName: String?
     let artworkUrl100: String
     let collectionName: String
+    let trackCount: Int
 }
