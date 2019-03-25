@@ -13,19 +13,44 @@ class EpisodesController: UITableViewController {
     
     fileprivate let cellId = "cellId"
     
-    var podcast: Podcast! {
+    var podcast: Podcast? {
         didSet {
-            navigationItem.title = podcast.trackName
+            navigationItem.title = podcast?.trackName ?? ""
             fetchEpisodes()
             self.tableView.reloadData()
         }
     }
     
+    fileprivate var episodes = [Episode]()
+    
     fileprivate func fetchEpisodes() {
         
+        guard let feedUrl = podcast?.feedUrl else { return }
+        
+        let isUsingHTTPS = feedUrl.contains("https") ? true : false
+        if !isUsingHTTPS {
+            print("WARNING: Accessing rss feed through unsecured HTTP protocol")
+        }
+        
+        guard let url = URL(string: feedUrl) else { return }
+        let parser = FeedParser(URL: url)
+        parser.parseAsync { result in
+            switch result {
+            case let .rss(feed):
+                self.episodes = feed.toEpisodes()
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+                break
+            case let .failure(error):
+                print("Could not fetch episodes using HTTPS: ", error)
+                break
+            default:
+                print("Found a feed")
+            }
+        }
+        
     }
-    
-    var episodes = [Episode]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +59,7 @@ class EpisodesController: UITableViewController {
     }
     
     fileprivate func setupTableView() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
+        tableView.register(EpisodeCell.self, forCellReuseIdentifier: cellId)
         tableView.tableFooterView = UIView()
     }
     
@@ -43,9 +68,9 @@ class EpisodesController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
-        let episode = episodes[indexPath.row]
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! EpisodeCell
+        let currentEpisode = episodes[indexPath.row]
+        cell.episode = currentEpisode
         return cell
     }
     

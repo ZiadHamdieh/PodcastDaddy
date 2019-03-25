@@ -22,7 +22,3 @@ struct Podcast: Decodable {
     
     let feedUrl: String
 }
-
-struct Episode: Decodable {
-    let title: String
-}

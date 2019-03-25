@@ -13,6 +13,9 @@
 		99F023DC22485FF100E7CE90 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F023D922485FF100E7CE90 /* UILabelExtension.swift */; };
 		99F023DF224892BC00E7CE90 /* EpisodesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F023DE224892BC00E7CE90 /* EpisodesController.swift */; };
 		99F023E222494D6700E7CE90 /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F023E122494D6700E7CE90 /* EpisodeCell.swift */; };
+		99F023E4224956BD00E7CE90 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F023E3224956BD00E7CE90 /* Episode.swift */; };
+		99F023E622496B7F00E7CE90 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F023E522496B7F00E7CE90 /* StringExtension.swift */; };
+		99F023E822496C8000E7CE90 /* RSSFeedExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F023E722496C8000E7CE90 /* RSSFeedExtension.swift */; };
 		99F028A4224819C9002A5952 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F028A3224819C9002A5952 /* AppDelegate.swift */; };
 		99F028AB224819CA002A5952 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99F028AA224819CA002A5952 /* Assets.xcassets */; };
 		99F028AE224819CA002A5952 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99F028AC224819CA002A5952 /* LaunchScreen.storyboard */; };
@@ -35,6 +38,9 @@
 		99F023D922485FF100E7CE90 /* UILabelExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		99F023DE224892BC00E7CE90 /* EpisodesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesController.swift; sourceTree = "<group>"; };
 		99F023E122494D6700E7CE90 /* EpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
+		99F023E3224956BD00E7CE90 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		99F023E522496B7F00E7CE90 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		99F023E722496C8000E7CE90 /* RSSFeedExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSFeedExtension.swift; sourceTree = "<group>"; };
 		99F028A0224819C9002A5952 /* PodcastDaddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PodcastDaddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99F028A3224819C9002A5952 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99F028AA224819CA002A5952 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -126,6 +132,7 @@
 		99F028B72248408E002A5952 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				99F023E3224956BD00E7CE90 /* Episode.swift */,
 				99F028C1224842B9002A5952 /* PodcastSearchResult.swift */,
 			);
 			path = Model;
@@ -165,6 +172,8 @@
 				99F023D822485FF000E7CE90 /* UIImageViewExtension.swift */,
 				99F023D922485FF100E7CE90 /* UILabelExtension.swift */,
 				99F023D722485FF000E7CE90 /* UIStackViewExtension.swift */,
+				99F023E522496B7F00E7CE90 /* StringExtension.swift */,
+				99F023E722496C8000E7CE90 /* RSSFeedExtension.swift */,
 			);
 			path = "Helpers & Extensions";
 			sourceTree = "<group>";
@@ -303,6 +312,7 @@
 			files = (
 				99F023DB22485FF100E7CE90 /* UIImageViewExtension.swift in Sources */,
 				99F028A4224819C9002A5952 /* AppDelegate.swift in Sources */,
+				99F023E622496B7F00E7CE90 /* StringExtension.swift in Sources */,
 				99F028C2224842B9002A5952 /* PodcastSearchResult.swift in Sources */,
 				99F028BD224841D6002A5952 /* SearchController.swift in Sources */,
 				99F028C022484277002A5952 /* PodcastSearchCell.swift in Sources */,
@@ -310,6 +320,8 @@
 				99F028CA22485B50002A5952 /* VerticalStackView.swift in Sources */,
 				99F028C822485B44002A5952 /* UIView+Layout.swift in Sources */,
 				99F023DA22485FF100E7CE90 /* UIStackViewExtension.swift in Sources */,
+				99F023E822496C8000E7CE90 /* RSSFeedExtension.swift in Sources */,
+				99F023E4224956BD00E7CE90 /* Episode.swift in Sources */,
 				99F023DC22485FF100E7CE90 /* UILabelExtension.swift in Sources */,
 				99F028C4224855E2002A5952 /* Service.swift in Sources */,
 				99F023E222494D6700E7CE90 /* EpisodeCell.swift in Sources */,
