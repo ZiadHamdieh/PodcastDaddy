@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 
 class SearchController: UITableViewController, UISearchBarDelegate {
     
@@ -21,13 +20,6 @@ class SearchController: UITableViewController, UISearchBarDelegate {
             }
         }
     }
-    
-//
-//    fileprivate let podcasts = [
-//        PodcastSearchResult(name: "1", artistName: "1"),
-//        PodcastSearchResult(name: "1", artistName: "1"),
-//        PodcastSearchResult(name: "1", artistName: "1"),
-//    ]
     
     fileprivate func setupSearchBar() {
         searchController.searchBar.delegate = self
@@ -63,29 +55,9 @@ class SearchController: UITableViewController, UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        let urlString = "https://itunes.apple.com/search"
-        let parameters = ["term"  : searchText,
-                          "media" : "podcast",
-                          "limit" : "25"]
-        
-        Alamofire.request(urlString, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseData(completionHandler: { (response) in
-            if let error = response.error {
-                print("Failed to fetch search results: ", error)
-                return
-            }
-            
-            guard let resp = response.data else { return }
-            
-            do {
-                let podcastData = try JSONDecoder().decode(PodcastSearchResult.self, from: resp)
-                self.podcasts = podcastData
-            } catch let decodeError {
-                print("Failed to decode search JSON: ", decodeError)
-            }
-        })
-        
-        Alamofire.request(urlString)
+        Service.shared.fetchPodcasts(searchQuery: searchText) { podcastResults in
+            self.podcasts = podcastResults
+        }
     }
     
 }
