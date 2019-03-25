@@ -7,6 +7,7 @@
 //
 
 import Alamofire
+import FeedKit
 
 class Service {
     
@@ -37,6 +38,29 @@ class Service {
         })
         
         Alamofire.request(urlString)
+    }
+    
+    func fetchEpisodes(feedUrl: String, completionHandler: @escaping ([Episode]) -> ()) {
+        
+        let isUsingHTTPS = feedUrl.contains("https") ? true : false
+        if !isUsingHTTPS {
+            print("WARNING: Accessing rss feed through unsecured HTTP protocol")
+        }
+        
+        guard let url = URL(string: feedUrl) else { return }
+        let parser = FeedParser(URL: url)
+        parser.parseAsync { result in
+            switch result {
+            case let .rss(feed):
+                completionHandler(feed.toEpisodes())
+                break
+            case let .failure(error):
+                print("Could not fetch episodes using HTTPS: ", error)
+                break
+            default:
+                print("Found a feed")
+            }
+        }
     }
     
 }

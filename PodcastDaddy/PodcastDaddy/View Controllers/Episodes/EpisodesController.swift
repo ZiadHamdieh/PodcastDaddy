@@ -17,44 +17,23 @@ class EpisodesController: UITableViewController {
         didSet {
             navigationItem.title = podcast?.trackName ?? ""
             fetchEpisodes()
-            self.tableView.reloadData()
         }
     }
     
     fileprivate var episodes = [Episode]()
     
     fileprivate func fetchEpisodes() {
-        
         guard let feedUrl = podcast?.feedUrl else { return }
-        
-        let isUsingHTTPS = feedUrl.contains("https") ? true : false
-        if !isUsingHTTPS {
-            print("WARNING: Accessing rss feed through unsecured HTTP protocol")
-        }
-        
-        guard let url = URL(string: feedUrl) else { return }
-        let parser = FeedParser(URL: url)
-        parser.parseAsync { result in
-            switch result {
-            case let .rss(feed):
-                self.episodes = feed.toEpisodes()
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-                break
-            case let .failure(error):
-                print("Could not fetch episodes using HTTPS: ", error)
-                break
-            default:
-                print("Found a feed")
+        Service.shared.fetchEpisodes(feedUrl: feedUrl) { episodes in
+            self.episodes = episodes
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
             }
         }
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupTableView()
     }
     
