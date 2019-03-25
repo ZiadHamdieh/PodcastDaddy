@@ -9,17 +9,18 @@
 import UIKit
 
 struct PodcastSearchResult: Decodable {
-    let results: [Result]
+    let results: [Podcast]
     let resultCount: Int
 }
 
-struct Result: Decodable {
+struct Podcast: Decodable {
     var trackName: String?
     var artistName: String?
     var artworkUrl600: String?
-    let feedUrl: String
     let collectionName: String
     let trackCount: Int
+    
+    let feedUrl: String
 }
 
 struct Episode: Decodable {

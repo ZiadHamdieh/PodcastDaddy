@@ -7,17 +7,23 @@
 //
 
 import UIKit
+import FeedKit
 
 class EpisodesController: UITableViewController {
     
-    var podcast: Result! {
+    fileprivate let cellId = "cellId"
+    
+    var podcast: Podcast! {
         didSet {
             navigationItem.title = podcast.trackName
+            fetchEpisodes()
             self.tableView.reloadData()
         }
     }
     
-    fileprivate let cellId = "cellId"
+    fileprivate func fetchEpisodes() {
+        
+    }
     
     var episodes = [Episode]()
     
@@ -25,9 +31,6 @@ class EpisodesController: UITableViewController {
         super.viewDidLoad()
         
         setupTableView()
-        
-
-        
     }
     
     fileprivate func setupTableView() {

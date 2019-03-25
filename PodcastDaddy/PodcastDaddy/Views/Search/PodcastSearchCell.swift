@@ -10,7 +10,7 @@ import UIKit
 
 class PodcastSearchCell: UITableViewCell {
     
-    var podcast: Result! {
+    var podcast: Podcast! {
         didSet {
             title.text = podcast?.trackName ?? ""
             artist.text = podcast?.artistName ?? ""

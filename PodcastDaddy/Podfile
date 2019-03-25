@@ -8,5 +8,5 @@ target 'PodcastDaddy' do
   # Pods for PodcastDaddy
   pod "Alamofire" 
   pod "SDWebImage" 
-  
+  pod "FeedKit" 
 end

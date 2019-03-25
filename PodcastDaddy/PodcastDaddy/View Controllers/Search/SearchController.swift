@@ -22,6 +22,14 @@ class SearchController: UITableViewController, UISearchBarDelegate {
         }
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupSearchBar()
+        setupTableView()
+        
+    }
+    
     fileprivate func setupSearchBar() {
         searchController.searchBar.delegate = self
         navigationItem.searchController = searchController
@@ -29,15 +37,7 @@ class SearchController: UITableViewController, UISearchBarDelegate {
         searchController.dimsBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchBar.placeholder = "Search Podcasts"
-        searchController.definesPresentationContext = true
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setupSearchBar()
-        setupTableView()
-        
+        definesPresentationContext = true
     }
     
     fileprivate func setupTableView() {
