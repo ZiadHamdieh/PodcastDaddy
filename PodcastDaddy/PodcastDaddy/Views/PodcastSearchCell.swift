@@ -17,7 +17,7 @@ class PodcastSearchCell: UITableViewCell {
             episodeCount.text = (podcast.trackCount > 1) ?
                 "\(podcast.trackCount) episodes" :
                 "\(podcast.trackCount) episode"
-            imageView?.sd_setImage(with: URL(string: podcast?.artworkUrl100 ?? ""))
+            imageView?.sd_setImage(with: URL(string: podcast?.artworkUrl600 ?? ""))
         }
     }
     

@@ -16,7 +16,12 @@ struct PodcastSearchResult: Decodable {
 struct Result: Decodable {
     var trackName: String?
     var artistName: String?
-    let artworkUrl100: String
+    var artworkUrl600: String?
+    let feedUrl: String
     let collectionName: String
     let trackCount: Int
+}
+
+struct Episode: Decodable {
+    let title: String
 }

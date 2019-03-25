@@ -28,6 +28,8 @@ class SearchController: UITableViewController, UISearchBarDelegate {
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.dimsBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Podcasts"
+        searchController.definesPresentationContext = true
     }
     
     override func viewDidLoad() {
@@ -40,6 +42,8 @@ class SearchController: UITableViewController, UISearchBarDelegate {
     
     fileprivate func setupTableView() {
         tableView.register(PodcastSearchCell.self, forCellReuseIdentifier: cellId)
+        // to get rid of separator lines without actually removing them
+        tableView.tableFooterView = UIView()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -53,10 +57,29 @@ class SearchController: UITableViewController, UISearchBarDelegate {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let episodesController = EpisodesController()
+        episodesController.podcast = podcasts?.results[indexPath.row]
+        navigationController?.pushViewController(episodesController, animated: true)
+    }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         Service.shared.fetchPodcasts(searchQuery: searchText) { podcastResults in
             self.podcasts = podcastResults
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = UILabel()
+        header.text = "Search for a Podcast"
+        header.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        header.textAlignment = .center
+        header.textColor = .purple
+        return header
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return (podcasts?.results.count ?? 0) > 0 ? 0 : 250
     }
     
 }
