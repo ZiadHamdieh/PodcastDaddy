@@ -11,13 +11,23 @@ import AVKit
 
 class PlayerView: UIView {
     
+    fileprivate let imageViewScale: CGFloat = 0.8
+    
     var episode: Episode! {
         didSet {
             episodeTitleLabel.text = episode.title
             authorLabel.text = episode.author
             imageView.sd_setImage(with: URL(string: episode.imageUrl))
-            
+            imageView.transform = CGAffineTransform(scaleX: imageViewScale, y: imageViewScale)
             playEpisode()
+        }
+    }
+    
+    override func didMoveToSuperview() {
+        let time = CMTimeMake(value: 1, timescale: 3)
+        let times = [NSValue(time: time)]
+        player.addBoundaryTimeObserver(forTimes: times, queue: .main) {
+            self.animateImageViewTransition()
         }
     }
     
@@ -169,9 +179,13 @@ class PlayerView: UIView {
             if self.player.timeControlStatus == .playing {
                 self.player.pause()
                 sender.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+//                self.imageView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+                animateImageViewTransition()
             } else {
                 self.player.play()
                 sender.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+                animateImageViewTransition()
+//                self.imageView.transform = .identity
             }
     }
     
@@ -184,6 +198,16 @@ class PlayerView: UIView {
         let playerItem = AVPlayerItem(url: episodeUrl)
         player.replaceCurrentItem(with: playerItem)
         player.play()
+    }
+    
+    fileprivate func animateImageViewTransition() {
+        UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            if self.player.timeControlStatus == .playing {
+                self.imageView.transform = .identity
+            } else {
+                self.imageView.transform = CGAffineTransform(scaleX: self.imageViewScale, y: self.imageViewScale)
+            }
+        })
     }
     
 }

@@ -28,6 +28,9 @@ class SearchController: UITableViewController, UISearchBarDelegate {
         setupSearchBar()
         setupTableView()
         
+        searchBar(searchController.searchBar, textDidChange: "joe")
+        
+        
     }
     
     fileprivate func setupSearchBar() {
