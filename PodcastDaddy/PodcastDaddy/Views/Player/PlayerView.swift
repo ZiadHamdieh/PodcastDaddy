@@ -32,7 +32,17 @@ class PlayerView: UIView {
             
             let totalDurationString = self.player.currentItem?.duration.toFormattedTimeStamp()
             self.totalDurationTimestampLabel.text = totalDurationString
+        
+            self.updateSliderForCurrentTimeStamp()
         }
+    }
+    
+    fileprivate func updateSliderForCurrentTimeStamp() {
+        let currentTime = CMTimeGetSeconds(player.currentTime())
+        let duration = CMTimeGetSeconds(player.currentItem?.duration ?? CMTimeMake(value: 1, timescale: 1))
+        let percentage = Float(currentTime / duration)
+        
+        playbackTimeSlider.setValue(percentage, animated: false)
     }
     
     override func didMoveToSuperview() {
@@ -91,7 +101,11 @@ class PlayerView: UIView {
 //        return button
 //    }()
     
-    let playbackTimeSlider = UISlider()
+    let playbackTimeSlider: UISlider = {
+        let slider = UISlider()
+        slider.addTarget(self, action: #selector(handlePlaybackSliderDrag), for: .touchUpInside)
+        return slider
+    }()
     
     let playPauseButton: UIButton = {
         let button = UIButton(type: .system)
@@ -108,6 +122,7 @@ class PlayerView: UIView {
         button.setImage(#imageLiteral(resourceName: "rewind15"), for: .normal)
         button.tintColor = .black
         button.constrainHeight(constant: 50)
+        button.addTarget(self, action: #selector(handleRewind), for: .touchUpInside)
         return button
     }()
     
@@ -115,6 +130,7 @@ class PlayerView: UIView {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "fastforward15"), for: .normal)
         button.tintColor = .black
+        button.addTarget(self, action: #selector(handleFastForward), for: .touchUpInside)
         button.constrainHeight(constant: 50)
         return button
     }()
@@ -222,6 +238,25 @@ class PlayerView: UIView {
                 self.imageView.transform = CGAffineTransform(scaleX: self.imageViewScale, y: self.imageViewScale)
             }
         })
+    }
+    
+    @objc fileprivate func handlePlaybackSliderDrag(sender: UISlider) {
+        let percentage = sender.value
+        guard let duration = player.currentItem?.duration else { return }
+        let durationInSeconds = CMTimeGetSeconds(duration)
+        let seekTimeInSeconds = Float64(percentage) * durationInSeconds
+        let seekTime = CMTimeMakeWithSeconds(seekTimeInSeconds, preferredTimescale: Int32(NSEC_PER_SEC))
+        player.seek(to: seekTime)
+    }
+    
+    @objc fileprivate func handleRewind() {
+        let timeRewind = CMTimeMakeWithSeconds(Float64(15), preferredTimescale: 1)
+        player.seek(to: player.currentTime() - timeRewind)
+    }
+    
+    @objc fileprivate func handleFastForward() {
+        let timeForward = CMTimeMakeWithSeconds(Float64(15), preferredTimescale: 1)
+        player.seek(to: player.currentTime() + timeForward)
     }
     
 }
