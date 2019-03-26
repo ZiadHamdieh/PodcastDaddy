@@ -23,12 +23,28 @@ class PlayerView: UIView {
         }
     }
     
+    fileprivate func observeCurrentPlayTime() {
+        // observe time elapsed on player since beginning of episode as well as total duration
+        let interval = CMTimeMake(value: 1, timescale: 1)
+        player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { time in
+            let timeElapsedString = time.toFormattedTimeStamp()
+            self.currentTimestampLabel.text = timeElapsedString
+            
+            let totalDurationString = self.player.currentItem?.duration.toFormattedTimeStamp()
+            self.totalDurationTimestampLabel.text = totalDurationString
+        }
+    }
+    
     override func didMoveToSuperview() {
+        
+        observeCurrentPlayTime()
+        
         let time = CMTimeMake(value: 1, timescale: 3)
         let times = [NSValue(time: time)]
         player.addBoundaryTimeObserver(forTimes: times, queue: .main) {
             self.animateImageViewTransition()
         }
+        
     }
     
     fileprivate let player: AVPlayer = {
@@ -38,13 +54,13 @@ class PlayerView: UIView {
     }()
     
     let currentTimestampLabel: UILabel = {
-        let label = UILabel(text: "00:00:00", font: .systemFont(ofSize: 12))
+        let label = UILabel(text: "--:--:--", font: .systemFont(ofSize: 12))
         label.textColor = UIColor(white: 0.5, alpha: 1)
         return label
     }()
     
     let totalDurationTimestampLabel: UILabel = {
-        let label = UILabel(text: "00:00:00", font: .systemFont(ofSize: 12))
+        let label = UILabel(text: "--:--:--", font: .systemFont(ofSize: 12))
         label.textColor = UIColor(white: 0.5, alpha: 1)
         return label
     }()
@@ -179,13 +195,11 @@ class PlayerView: UIView {
             if self.player.timeControlStatus == .playing {
                 self.player.pause()
                 sender.setImage(#imageLiteral(resourceName: "play"), for: .normal)
-//                self.imageView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
                 animateImageViewTransition()
             } else {
                 self.player.play()
                 sender.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
                 animateImageViewTransition()
-//                self.imageView.transform = .identity
             }
     }
     
