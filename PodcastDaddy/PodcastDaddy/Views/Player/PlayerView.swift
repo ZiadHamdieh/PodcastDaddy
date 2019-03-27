@@ -26,14 +26,15 @@ class PlayerView: UIView {
     fileprivate func observeCurrentPlayTime() {
         // observe time elapsed on player since beginning of episode as well as total duration
         let interval = CMTimeMake(value: 1, timescale: 1)
-        player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { time in
+        player.addPeriodicTimeObserver(forInterval: interval, queue: .main) {
+            [weak self] time in
             let timeElapsedString = time.toFormattedTimeStamp()
-            self.currentTimestampLabel.text = timeElapsedString
+            self?.currentTimestampLabel.text = timeElapsedString
             
-            let totalDurationString = self.player.currentItem?.duration.toFormattedTimeStamp()
-            self.totalDurationTimestampLabel.text = totalDurationString
+            let totalDurationString = self?.player.currentItem?.duration.toFormattedTimeStamp()
+            self?.totalDurationTimestampLabel.text = totalDurationString
         
-            self.updateSliderForCurrentTimeStamp()
+            self?.updateSliderForCurrentTimeStamp()
         }
     }
     
@@ -52,7 +53,8 @@ class PlayerView: UIView {
         let time = CMTimeMake(value: 1, timescale: 3)
         let times = [NSValue(time: time)]
         player.addBoundaryTimeObserver(forTimes: times, queue: .main) {
-            self.animateImageViewTransition()
+            [weak self] in
+            self?.animateImageViewTransition()
         }
         
     }
