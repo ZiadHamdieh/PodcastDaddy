@@ -139,6 +139,8 @@ class PlayerView: UIView {
         let slider = UISlider()
         slider.minimumValueImage = #imageLiteral(resourceName: "muted_volume")
         slider.maximumValueImage = #imageLiteral(resourceName: "max_volume")
+        slider.setValue(0.65, animated: false)
+        slider.addTarget(self, action: #selector(handleVolumeChange), for: .touchUpInside)
         return slider
     }()
     
@@ -249,14 +251,33 @@ class PlayerView: UIView {
         player.seek(to: seekTime)
     }
     
+    @objc fileprivate func handleVolumeChange(sender: UISlider) {
+        player.volume = sender.value
+    }
+    
     @objc fileprivate func handleRewind() {
-        let timeRewind = CMTimeMakeWithSeconds(Float64(15), preferredTimescale: 1)
-        player.seek(to: player.currentTime() - timeRewind)
+        performTimeShift(direction: .backwards)
     }
     
     @objc fileprivate func handleFastForward() {
-        let timeForward = CMTimeMakeWithSeconds(Float64(15), preferredTimescale: 1)
-        player.seek(to: player.currentTime() + timeForward)
+        performTimeShift(direction: .forwards)
+    }
+    
+    fileprivate enum TimeShiftDirection {
+        case forwards
+        case backwards
+    }
+    
+    fileprivate func performTimeShift(direction: TimeShiftDirection) {
+        let timeShift = CMTimeMakeWithSeconds(Float64(15), preferredTimescale: 1)
+        switch direction {
+        case .backwards:
+            player.seek(to: player.currentTime() - timeShift)
+            break
+        case .forwards:
+            player.seek(to: player.currentTime() + timeShift)
+        }
+        
     }
     
 }
